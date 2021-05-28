@@ -46,11 +46,11 @@ func isUnsigned(typeName string) bool {
 	return ([]byte(typeName))[0] == 'u' || ([]byte(typeName))[0] == 'b'
 }
 
-func makeFunction(funcNameStart string, funcNameType string, funcParameters string, funcReturn string, funcContents string) string {
+func makeFunction(funcNameStart, funcNameType, funcParameters, funcReturn, funcContents string) string {
 	return fmt.Sprintf("func %s%s(%s) %s {%s\n}\n\n", funcNameStart, funcNameType, funcParameters, funcReturn, funcContents)
 }
 
-func makeAbsFunc(typeFunc string, typeName string) string {
+func makeAbsFunc(typeFunc, typeName string) string {
 	if isComplex(typeName) {
 		return makeFunction("Abs", typeFunc, "x " + typeName, "float64", "return cmplx.Abs(complex128(x))")
 	} else if isUnsigned(typeName) {
@@ -67,7 +67,7 @@ func makeAbsFunc(typeFunc string, typeName string) string {
 	}
 }
 
-func makeMaxFunc(typeFunc string, typeName string) string {
+func makeMaxFunc(typeFunc, typeName string) string {
 	if isComplex(typeName) {
 		return ""
 	} else {
@@ -82,7 +82,7 @@ func makeMaxFunc(typeFunc string, typeName string) string {
 	}
 }
 
-func makeMinFunc(typeFunc string, typeName string) string {
+func makeMinFunc(typeFunc, typeName string) string {
 	if isComplex(typeName) {
 		return ""
 	} else {
