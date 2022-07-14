@@ -52,7 +52,10 @@ func makeFunction(funcNameStart, funcNameType, funcParameters, funcReturn, funcC
 
 func makeAbsFunc(typeFunc, typeName string) string {
 	if isComplex(typeName) {
-		return makeFunction("Abs", typeFunc, "x " + typeName, "float64", "return cmplx.Abs(complex128(x))")
+		return makeFunction("Abs", typeFunc, "x " + typeName, "float64", ,
+			// Don't mistake the next lines for this file's code; notice the backtick
+			`
+	return cmplx.Abs(complex128(x))`) // End of generated function's content
 	} else if isUnsigned(typeName) {
 		return ""
 	} else {
